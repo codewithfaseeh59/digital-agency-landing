@@ -4,8 +4,6 @@ A modern creative agency landing page built with HTML, CSS, JavaScript, GSAP, Lo
 
 ## 🚀 Live Demo
 
----
-
 https://codewithfaseeh59.github.io/digital-agency-landing/
 
 ---
