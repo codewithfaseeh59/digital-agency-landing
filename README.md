@@ -7,6 +7,7 @@ A modern creative agency landing page built with HTML, CSS, JavaScript, GSAP, Lo
 
 https://codewithfaseeh59.github.io/digital-agency-landing/
 
+---
 ## ✨ Features
 - Smooth scrolling with Locomotive Scroll
 - GSAP page load animations
