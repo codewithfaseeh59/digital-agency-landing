@@ -3,7 +3,9 @@
 A modern creative agency landing page built with HTML, CSS, JavaScript, GSAP, Locomotive Scroll, and Shery.js — featuring smooth animations, custom cursor, and scroll effects.
 
 ## 🚀 Live Demo
-[View Live](#) <!-- apna Netlify link yahan daal dena -->
+[View Live](#)
+
+https://codewithfaseeh59.github.io/digital-agency-landing/
 
 ## ✨ Features
 - Smooth scrolling with Locomotive Scroll
