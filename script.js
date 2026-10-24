@@ -1,26 +1,53 @@
-function loader() {
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+// Resolves once the hero image and font are ready, or after 1.5s at most.
+function criticalAssetsReady() {
+    const hero = document.querySelector(".hero-image img");
+    const heroLoaded = hero.complete
+        ? Promise.resolve()
+        : new Promise(resolve => {
+            hero.addEventListener("load", resolve, { once: true });
+            hero.addEventListener("error", resolve, { once: true });
+        });
+    const cap = new Promise(resolve => setTimeout(resolve, 1500));
+    return Promise.race([Promise.all([heroLoaded, document.fonts.ready]), cap]);
+}
+
+function loader(onExit) {
+    const loaderEl = document.querySelector(".loader");
+    if (reduceMotion) {
+        loaderEl.style.display = "none";
+        return;
+    }
+    const ready = criticalAssetsReady();
     const tl = gsap.timeline()
     tl.to(".loader-text span", {
         y: 0,
-        duration: 0.8,
+        duration: 0.5,
         ease: "power3.out",
-        stagger: 0.15,
+        stagger: 0.1,
     })
 
         .to(".loader-text span", {
             y: -100,
-            duration: 0.6,
+            duration: 0.4,
             ease: "power3.in",
-            delay: 0.1,
-            stagger: 0.4,
+            delay: 0.05,
+            stagger: 0.15,
+        })
+
+        .add(() => {
+            tl.pause();
+            ready.then(() => tl.resume());
         })
 
         .to(".loader", {
             yPercent: -100,
-            duration: 0.8,
+            duration: 0.6,
             ease: "power3.inOut",
+            onStart: onExit,
             onComplete: () => {
-                document.querySelector(".loader").style.display = "none"
+                loaderEl.style.display = "none"
             }
         })
 };
@@ -33,7 +60,7 @@ function locoAnime() {
     gsap.registerPlugin(ScrollTrigger)
     scroll = new LocomotiveScroll({
         el: document.querySelector('#wrapper'),
-        smooth: true,
+        smooth: !reduceMotion,
     });
 
     scroll.on("scroll", ScrollTrigger.update)
@@ -48,6 +75,7 @@ function locoAnime() {
     })
     ScrollTrigger.addEventListener("refresh", () => scroll.update())
     ScrollTrigger.refresh()
+    window.addEventListener("load", () => scroll.update())
 };
 
 function heroGSAPAnime() {
@@ -56,7 +84,6 @@ function heroGSAPAnime() {
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        delay: 0.2,
     });
 
     gsap.from(".nav-menu", {
@@ -64,7 +91,7 @@ function heroGSAPAnime() {
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        delay: 0.4,
+        delay: 0.1,
     });
 
     gsap.from(".hero-heading .line", {
@@ -72,8 +99,8 @@ function heroGSAPAnime() {
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        delay: 0.6,
-        stagger: 0.2,
+        delay: 0.2,
+        stagger: 0.15,
     });
 
     gsap.from(".hero-sub", {
@@ -81,7 +108,7 @@ function heroGSAPAnime() {
         opacity: 0,
         duration: 1,
         ease: "power3.out",
-        delay: 1,
+        delay: 0.45,
     });
 
     gsap.from(".hero-image", {
@@ -89,29 +116,24 @@ function heroGSAPAnime() {
         opacity: 0,
         duration: 1.2,
         ease: "power3.out",
-        delay: 1.2,
+        delay: 0.6,
     });
-
-    const navMenu = document.querySelector(".nav-menu");
-    const navOverlay = document.querySelector(".nav-overlay");
-    const navLinks = document.querySelectorAll(".nav-overlay ul li a");
-
-    navMenu.addEventListener("click", () => {
-        navMenu.classList.toggle("active")
-        navOverlay.classList.toggle("active")
-        if (navOverlay.classList.contains("active")) {
-            gsap.from(navLinks, {
-                y: 80,
-                opacity: 0,
-                duration: 0.6,
-                ease: "power3.out",
-                delay: 0.3,
-                stagger: 0.1,
-            })
-        }
-
-    })
 };
+
+function reveal(targets, trigger, vars = {}) {
+    gsap.from(targets, {
+        scrollTrigger: {
+            trigger,
+            scroller: "#wrapper",
+            start: "top 85%",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        ...vars,
+    })
+}
 
 function scrollTriggerAnime() {
 
@@ -163,31 +185,42 @@ function scrollTriggerAnime() {
         stagger: 0.15,
     })
 
-    gsap.from(".service-card", {
-        scrollTrigger: {
-            trigger: ".services-grid",
-            scroller: "#wrapper",
-            start: "top 80%",
-        },
-        y: 80,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2,
+    gsap.utils.toArray(".service-card").forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                scroller: "#wrapper",
+                start: "top 88%",
+            },
+            y: 80,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            delay: (i % 2) * 0.2,
+        })
     })
 
-    gsap.from(".work-card", {
-        scrollTrigger: {
-            trigger: ".work-grid",
-            scroller: "#wrapper",
-            start: "top 80%",
-        },
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: 0.2,
+    gsap.utils.toArray(".work-card").forEach((card, i) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                scroller: "#wrapper",
+                start: "top 88%",
+            },
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            delay: (i % 2) * 0.2,
+        })
     })
+
+    reveal(".process-top", ".process-top");
+    reveal(".process-step", ".process-grid", { stagger: 0.15 });
+    reveal(".testimonials-top", ".testimonials-top");
+    reveal(".testimonial-card", ".testimonials-grid", { stagger: 0.15 });
+    reveal(".contact-left", ".contact");
+    reveal(".contact-form", ".contact", { delay: 0.15 });
 
     gsap.from(".footer-top", {
         scrollTrigger: {
@@ -229,26 +262,90 @@ function sheryAnime() {
 }
 
 function navbar() {
-    
-const navLinks = document.querySelectorAll(".nav-overlay ul li a");
-const navMenu = document.querySelector(".nav-menu");
-const navOverlay = document.querySelector(".nav-overlay");
+    const navMenu = document.querySelector(".nav-menu");
+    const navOverlay = document.querySelector(".nav-overlay");
+    const navLinks = document.querySelectorAll(".nav-overlay ul li a");
 
-navLinks.forEach(link=>{
-    link.addEventListener("click",(e)=>{
-        e.preventDefault()
-        const target = link.getAttribute("href")
-        navMenu.classList.remove("active")
-        scroll.scrollTo(document.querySelector(target))
+    function setMenu(open) {
+        navMenu.classList.toggle("active", open)
+        navOverlay.classList.toggle("active", open)
+        navMenu.setAttribute("aria-expanded", open)
+    }
+
+    navMenu.addEventListener("click", () => {
+        setMenu(!navOverlay.classList.contains("active"))
+        if (navOverlay.classList.contains("active") && !reduceMotion) {
+            gsap.from(navLinks, {
+                y: 80,
+                opacity: 0,
+                duration: 0.6,
+                ease: "power3.out",
+                delay: 0.3,
+                stagger: 0.1,
+            })
+        }
     })
-})
 
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener("click", (e) => {
+            const target = document.querySelector(link.getAttribute("href"))
+            if (!target) return
+            e.preventDefault()
+            setMenu(false)
+            scroll.scrollTo(target)
+        })
+    })
+};
+
+function contactForm() {
+    const form = document.querySelector("#contact-form");
+    const status = document.querySelector("#form-status");
+    const rules = {
+        name: v => v.trim().length >= 2 || "Please enter your name (at least 2 characters).",
+        email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || "Please enter a valid email address.",
+        type: v => v !== "" || "Please choose a service.",
+        message: v => v.trim().length >= 20 || "Please tell us a little more (at least 20 characters).",
+    };
+
+    function validate(name) {
+        const input = form.elements[name];
+        const result = rules[name](input.value);
+        const valid = result === true;
+        form.querySelector("#" + input.id + "-error").textContent = valid ? "" : result;
+        input.closest(".field").classList.toggle("invalid", !valid);
+        input.setAttribute("aria-invalid", !valid);
+        return valid;
+    }
+
+    Object.keys(rules).forEach(name => {
+        const input = form.elements[name];
+        input.addEventListener("blur", () => validate(name));
+        input.addEventListener("input", () => {
+            if (input.closest(".field").classList.contains("invalid")) validate(name);
+        });
+    });
+
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        status.className = "form-status";
+        const invalid = Object.keys(rules).filter(name => !validate(name));
+        if (invalid.length) {
+            status.textContent = "Please fix the highlighted fields.";
+            status.classList.add("error");
+            form.elements[invalid[0]].focus();
+            return;
+        }
+        status.textContent = "Thanks! Your message is valid, but this is a concept site so nothing was sent.";
+        form.reset();
+    });
 };
 
 
-loader();
+loader(heroGSAPAnime);
 locoAnime();
-scrollTriggerAnime();
-heroGSAPAnime();
-sheryAnime();
+if (!reduceMotion) {
+    scrollTriggerAnime();
+    sheryAnime();
+}
 navbar();
+contactForm();

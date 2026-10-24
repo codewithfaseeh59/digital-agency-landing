@@ -4,14 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Landing Agency-CodeWithFaseeh</title>
+    <title>Creative Digital Agency | Concept by CodeWithFaseeh</title>
+    <meta name="description"
+        content="Concept website for a creative digital agency by CodeWithFaseeh: web design, development, branding and motion, with GSAP animation and WebGL hover effects.">
+    <meta name="author" content="CodeWithFaseeh">
+    <meta name="theme-color" content="#111111">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Creative Digital Agency | Concept by CodeWithFaseeh">
+    <meta property="og:description"
+        content="A concept creative agency site: bold web design, development, branding and motion, built with GSAP, Locomotive Scroll and WebGL effects.">
+    <meta property="og:image" content="Assets/Images/hero-image.webp">
+    <meta property="og:image:alt" content="Dual-monitor studio desk with audio gear">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Creative Digital Agency | Concept by CodeWithFaseeh">
+    <meta name="twitter:description"
+        content="A concept creative agency site: bold web design, development, branding and motion, built with GSAP, Locomotive Scroll and WebGL effects.">
+    <meta name="twitter:image" content="Assets/Images/hero-image.webp">
+
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="preload" href="Fonts/NimbusSanL-Reg.ttf" as="font" type="font/ttf" crossorigin>
+    <link rel="preload" href="Assets/Images/hero-image.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" /> <!-- Recommended -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-        <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/sheryjs/dist/Shery.css" />
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -26,16 +45,16 @@
 
             <nav class="navbar" id="navbar">
                 <div class="nav-logo">
-                    <a href="#">Agency.</a>
+                    <a href="#hero">Agency.</a>
                 </div>
-                <div class="nav-menu">
+                <button class="nav-menu" type="button" aria-label="Toggle menu" aria-expanded="false">
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
             <div class="nav-overlay">
                 <ul>
-                    <li><a href="#home">Home</a></li>
+                    <li><a href="#hero">Home</a></li>
                     <li><a href="#work">Work</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#services">Services</a></li>
@@ -56,10 +75,11 @@
                     </p>
                 </div>
                 <div class="hero-image">
-                    <img src="./Assets/Images/hero-image.jpg" alt="Agency">
+                    <img src="./Assets/Images/hero-image.webp" width="1600" height="1065" fetchpriority="high"
+                        alt="Dual-monitor creative studio desk with audio equipment and a tablet">
                 </div>
             </section>
-            <section class="marquee" id="marquee">
+            <section class="marquee" id="marquee" aria-hidden="true">
                 <div class="marquee-track">
                     <div class="marquee-content">
                         <span>Creative Agency</span>
@@ -87,7 +107,7 @@
             </section>
             <section class="about" id="about">
                 <div class="about-left">
-                    <p class="about-tag">Who we Are</p>
+                    <p class="about-tag">Who We Are</p>
                     <h2 class="about-heading">We craft bold digital solutions</h2>
                     <div class="about-stats">
                         <div class="stat">
@@ -106,7 +126,8 @@
                 </div>
                 <div class="about-right">
                     <div class="about-image">
-                        <img src="./Assets/Images/about-image.jpg" alt="about">
+                        <img src="./Assets/Images/about-image.webp" width="1200" height="699" loading="lazy"
+                            alt="Team working at rows of monitors in a busy control room">
                     </div>
                 </div>
             </section>
@@ -120,17 +141,32 @@
                     <div class="service-card">
                         <span class="service-number">01</span>
                         <h3>Web Design</h3>
-                        <p>We design stunning, user-friendly websites that captivate audiences and drive results for
-                            your brand.</p>
+                        <p>Interfaces that feel effortless. We turn research and brand into layouts, type systems and
+                            prototypes that convert visitors into customers.</p>
                         <div class="service-arrow">↗</div>
                     </div>
                     <div class="service-card">
                         <span class="service-number">02</span>
                         <h3>Development</h3>
-                        <p>We build fast, scalable, and robust web applications using the latest technologies and best
-                            practices.</p>
+                        <p>Fast, accessible, maintainable builds. From marketing sites to full web apps, we ship clean
+                            code that scores well and scales with you.</p>
                         <div class="service-arrow">↗</div>
                     </div>
+                    <div class="service-card">
+                        <span class="service-number">03</span>
+                        <h3>Brand Identity</h3>
+                        <p>Logos, colour, type and voice that hold together everywhere your brand shows up, with
+                            guidelines your team can actually use.</p>
+                        <div class="service-arrow">↗</div>
+                    </div>
+                    <div class="service-card">
+                        <span class="service-number">04</span>
+                        <h3>Motion Design</h3>
+                        <p>Purposeful animation and micro-interactions that guide attention, explain products and give
+                            every page a pulse without slowing it down.</p>
+                        <div class="service-arrow">↗</div>
+                    </div>
+                </div>
             </section>
             <section class="work" id="work">
                 <div class="work-top">
@@ -140,54 +176,208 @@
                 <div class="work-grid">
                     <div class="work-card">
                         <div class="work-image" id="work-image-1">
-                            <img src="./Assets/Images/work-image-1.jpg" alt="Project 1">
+                            <img src="./Assets/Images/work-image-1.webp" width="1200" height="1186" loading="lazy"
+                                alt="Noir Cinema concept: a monochrome movie landing page">
                             <div class="work-overlay">
-                                <h3>Project One</h3>
+                                <h3>Noir Cinema</h3>
                                 <p>Web Design</p>
+                                <p class="work-desc">A moody, monochrome landing page for a film franchise with
+                                    cinematic type.</p>
                                 <span>↗</span>
                             </div>
                         </div>
                     </div>
                     <div class="work-card">
                         <div class="work-image" id="work-image-2">
-                            <img src="./Assets/Images/work-image-2.jpg" alt="Project 2">
+                            <img src="./Assets/Images/work-image-2.webp" width="1200" height="741" loading="lazy"
+                                alt="Crimson Premiere concept: a bold red movie ticketing website">
                             <div class="work-overlay">
-                                <h3>Project Two</h3>
+                                <h3>Crimson Premiere</h3>
                                 <p>Development</p>
+                                <p class="work-desc">A high-energy ticketing site with live viewer stats and trailers.
+                                </p>
+                                <span>↗</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-image work-art art-roast" role="img"
+                            aria-label="Lumen Coffee Roasters concept cover">
+                            <span class="art-mark" aria-hidden="true">L</span>
+                            <div class="work-overlay">
+                                <h3>Lumen Coffee Roasters</h3>
+                                <p>Brand Identity</p>
+                                <p class="work-desc">Warm packaging, wordmark and storefront for a small-batch roaster.
+                                </p>
+                                <span>↗</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-image work-art art-fit" role="img" aria-label="Pulse Fitness concept cover">
+                            <span class="art-mark" aria-hidden="true">P</span>
+                            <div class="work-overlay">
+                                <h3>Pulse Fitness</h3>
+                                <p>Web App</p>
+                                <p class="work-desc">Workout planner with progress charts and a streak system that keeps
+                                    members coming back.</p>
+                                <span>↗</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-image work-art art-orbit" role="img" aria-label="Orbit Finance concept cover">
+                            <span class="art-mark" aria-hidden="true">O</span>
+                            <div class="work-overlay">
+                                <h3>Orbit Finance</h3>
+                                <p>UI / UX Design</p>
+                                <p class="work-desc">A calm dashboard that makes budgets, goals and spending easy to
+                                    read.</p>
+                                <span>↗</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="work-card">
+                        <div class="work-image work-art art-verdant" role="img"
+                            aria-label="Verdant Studio concept cover">
+                            <span class="art-mark" aria-hidden="true">V</span>
+                            <div class="work-overlay">
+                                <h3>Verdant Studio</h3>
+                                <p>Motion Design</p>
+                                <p class="work-desc">Animated identity and launch film for an eco-architecture
+                                    practice.</p>
                                 <span>↗</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+            <section class="process" id="process">
+                <div class="process-top">
+                    <p class="process-tag">How We Work</p>
+                    <h2 class="process-heading">Our <em>Process</em></h2>
+                </div>
+                <ol class="process-grid">
+                    <li class="process-step">
+                        <span class="process-number">01</span>
+                        <h3>Discover</h3>
+                        <p>We learn your goals, audience and constraints through a short workshop and a look at your
+                            competitors.</p>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-number">02</span>
+                        <h3>Design</h3>
+                        <p>Wireframes, visual direction and a clickable prototype, refined with your feedback before
+                            any code.</p>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-number">03</span>
+                        <h3>Build</h3>
+                        <p>Responsive, accessible development with weekly previews, so you always see real progress.
+                        </p>
+                    </li>
+                    <li class="process-step">
+                        <span class="process-number">04</span>
+                        <h3>Launch</h3>
+                        <p>Testing, performance tuning and a smooth go-live, followed by support while you settle in.
+                        </p>
+                    </li>
+                </ol>
+            </section>
+            <section class="testimonials" id="testimonials">
+                <div class="testimonials-top">
+                    <p class="testimonials-tag">Kind Words</p>
+                    <h2 class="testimonials-heading">Client <em>Feedback</em></h2>
+                </div>
+                <div class="testimonials-grid">
+                    <figure class="testimonial-card">
+                        <blockquote>“They understood our brand faster than we did. The new site doubled our demo
+                            requests in two months.”</blockquote>
+                        <figcaption><strong>Amelia Hart</strong><span>Founder, Lumen Coffee</span></figcaption>
+                    </figure>
+                    <figure class="testimonial-card">
+                        <blockquote>“Fast, communicative and obsessed with detail. The animations feel premium and the
+                            pages still load instantly.”</blockquote>
+                        <figcaption><strong>Daniel Okafor</strong><span>CTO, Orbit Finance</span></figcaption>
+                    </figure>
+                    <figure class="testimonial-card">
+                        <blockquote>“From the first workshop to launch day, the process was clear and calm. We would
+                            hire them again tomorrow.”</blockquote>
+                        <figcaption><strong>Sofia Marin</strong><span>Marketing Lead, Pulse Fitness</span></figcaption>
+                    </figure>
+                </div>
+                <p class="testimonials-note">Sample feedback written for this concept project.</p>
+            </section>
+            <section class="contact" id="contact">
+                <div class="contact-left">
+                    <p class="contact-tag">Let's Talk</p>
+                    <h2 class="contact-heading">Start your <em>project</em></h2>
+                    <p class="contact-sub">Tell us what you are building and we will reply within two working days.</p>
+                </div>
+                <form class="contact-form" id="contact-form" novalidate>
+                    <div class="field">
+                        <label for="cf-name">Name</label>
+                        <input id="cf-name" name="name" type="text" autocomplete="name" required minlength="2"
+                            aria-describedby="cf-name-error">
+                        <p class="field-error" id="cf-name-error" role="alert"></p>
+                    </div>
+                    <div class="field">
+                        <label for="cf-email">Email</label>
+                        <input id="cf-email" name="email" type="email" autocomplete="email" required
+                            aria-describedby="cf-email-error">
+                        <p class="field-error" id="cf-email-error" role="alert"></p>
+                    </div>
+                    <div class="field">
+                        <label for="cf-type">What do you need?</label>
+                        <select id="cf-type" name="type" required aria-describedby="cf-type-error">
+                            <option value="">Choose a service</option>
+                            <option>Web Design</option>
+                            <option>Development</option>
+                            <option>Brand Identity</option>
+                            <option>Motion Design</option>
+                        </select>
+                        <p class="field-error" id="cf-type-error" role="alert"></p>
+                    </div>
+                    <div class="field">
+                        <label for="cf-message">Message</label>
+                        <textarea id="cf-message" name="message" rows="5" required minlength="20"
+                            aria-describedby="cf-message-error"></textarea>
+                        <p class="field-error" id="cf-message-error" role="alert"></p>
+                    </div>
+                    <button class="form-submit" type="submit">Send message <span aria-hidden="true">↗</span></button>
+                    <p class="form-status" id="form-status" role="status"></p>
+                </form>
+            </section>
         </main>
         <footer class="footer">
             <div class="footer-top">
                 <div class="footer-logo">
-                    <a href="#">Agency.</a>
+                    <a href="#hero">Agency.</a>
                 </div>
-                <p class="footer-tagline">We craft bold digital experience<br>that make an impact.</p>
+                <p class="footer-tagline">We craft bold digital experiences<br>that make an impact.</p>
             </div>
             <div class="footer-bottom">
                 <p class="footer-copy">&copy; 2026 CodeWithFaseeh. All rights reserved.</p>
+                <p class="footer-copy">Concept project. Not a real agency.</p>
             </div>
             <div class="social-icons">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/codewithfaseeh59" target="_blank" rel="noopener noreferrer"
+                    aria-label="CodeWithFaseeh on GitHub">
+                    <svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor" aria-hidden="true">
+                        <path
+                            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                    </svg>
+                </a>
             </div>
         </footer>
     </div>
 
-
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
-    <script type="text/javascript" src="https://unpkg.com/sheryjs/dist/Shery.js"></script> <!-- Recommended -->
-    <script src="script.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+    <script defer src="https://unpkg.com/sheryjs/dist/Shery.js"></script>
+    <script defer src="script.js"></script>
 </body>
 
 </html>
